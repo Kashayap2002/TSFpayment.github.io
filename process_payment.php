@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
     // Set up PayPal API credentials
-    $clientId = 'AZO64UyG4iF3Lgav0MYPTkBW-9ZZXrGC8xARQvVF';
-    $clientSecret = 'EGuPIWBVa6SwCRDMFmXkG6GO4V5ahZx77JkVzSWe';
+    $clientId = 'AdpH6mBHSNEtFYnK3BqrzwKUkhXXXbAzqkY2Jqd-KOPsGLwFxvpeiQQ7m7Dz3E1VLgBsXc9V9mzj3455';
+    $clientSecret = 'ECtoX4xkf8Y4j4pMFZEhcGAWsMsPpnJKc28sG64H_rSCeIAWO8Dz5ABlRPkRQeuIA5_pU_5ibEBmFpsg';
     $environment = new SandboxEnvironment($clientId, $clientSecret);
     $client = new PayPalHttpClient($environment);
 
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // mail($to, $subject, $message, $headers);
 
                 // Redirect to the thank you page
-                header("Location: thankyou.html");
+                header("Location: thank.you.php?invoice=" . urlencode($invoice));
                 exit();
             } else {
                 // Order capture failed, handle the error
