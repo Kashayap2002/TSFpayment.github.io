@@ -20,7 +20,7 @@
                 <option value="">Select Payment Type</option>
                 <option value="creditcard">Credit Card</option>
                 <option value="paypal">PayPal</option>
-                <!-- Add more payment options as needed -->
+                
             </select>
         </div>
 

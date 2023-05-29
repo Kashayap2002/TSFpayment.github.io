@@ -45,33 +45,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $captureResponse = $client->execute($captureRequest);
 
             if ($captureResponse->statusCode == 201) {
-                // Order captured successfully
-
-                // Generate the invoice
+                
                 $invoice = "Invoice: Amount - $" . $amount;
 
-                // Send email with the invoice
+               
                 $to = $email;
                 $subject = "Payment Confirmation";
                 $message = "Thank you for your donation. Invoice details: \n\n" . $invoice;
                 $headers = "From: 21052466@kiit.ac.in";
 
-                // Uncomment the line below to send the email (requires a configured email service provider)
-                // mail($to, $subject, $message, $headers);
+                
+                mail($to, $subject, $message, $headers);
 
-                // Redirect to the thank you page
+               
                 header("Location: thank.you.php?invoice=" . urlencode($invoice));
                 exit();
             } else {
-                // Order capture failed, handle the error
+              
                 echo "Order capture failed. Error details: " . $captureResponse->result;
             }
         } else {
-            // Order creation failed, handle the error
+           
             echo "Order creation failed. Error details: " . $response->result;
         }
     } catch (Exception $ex) {
-        // Exception occurred, handle the error
+        
         echo "An exception occurred. Error details: " . $ex->getMessage();
     }
 }
